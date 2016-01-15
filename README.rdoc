@@ -5,7 +5,17 @@ reproduce errors when creating rake-tasks which include url_helpers
 
 given i want to make use of helpers and url_helper in rake task: /lib/tasks/foo.rake
 
-rake do_something 
+
+=== findings
+
+whenever you include 
+ include Rails.application.routes.url_helpers
+ ...
+
+in rake task 
+then 'rake test' will produce errors because of the included url_helpers
+
+
 === rake test (with rails 4.2.4)
 
  1) Error:
